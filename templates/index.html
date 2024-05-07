@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>PLANT TOON</title>
+</head>
+<body>
+  <style>
+    body{
+      background-color: #FFCBCB
+    }
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <nav class="navbar bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="icon.ico" alt="Bootstrap" width="60" height="54">
+      </a>
+    </div>
+  </nav>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">¿Quienes somos? </span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Productos</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="container">
+        <h2 class="d-flex justify-content-center">Predicción para especie de planta</h2>
+        <form action="{{ url_for('predict')}}" method="post">
+           
+              <div class="form-group">
+                <label for="sepal_length">Longitud del Sépalo: </label>
+                <input type="number" step="0.01" class="form-control" id="sepal_length" name="sepal_length" required>               
+              </div>
+
+              <div class="form-group">
+                <label for="sepal_width">Anchura del Sépalo: </label>
+                <input type="number" step="0.01" class="form-control" id="sepal_width" name="sepal_width" required>  
+              </div>
+
+              <div class="form-group">
+                <label for="petal_length">Longitud del Pétalo: </label>
+                <input type="number" step="0.01" class="form-control" id="petal_length" name="petal_length" required> 
+              </div>
+              
+              <div class="form-group">
+                <label for="petal_width">Anchura del Pétalo: </label>
+                <input type="number" step="0.01" class="form-control" id="petal_width" name="petal_width" required> 
+              </div>
+            <br>
+              <button type="submit" class="btn btn-primary">Predecir especie</button>
+          </form>
+            <br>
+
+    </div>
+    {% if prediction_text %}
+    <h2 class="d-flex justify-content-center">{{ prediction_text }}</h2>
+    {% endif %}
+    
+    
+</body>
+</html>
