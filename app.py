@@ -35,5 +35,14 @@ def predict():
     else:
         return render_template('index.html')
 
+# Nuevas rutas para las otras páginas
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
+
+@app.route('/products', methods=['GET'])
+def products():
+    return render_template('products.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
